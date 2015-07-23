@@ -9,18 +9,21 @@
 
 		var defaults = {
 			format_output: function(tim, mini, meri) {
-				if(settings.show_meridian){
-					return tim + " : " + mini + " : " + meri;
-				}else{
-					return tim + " : " + mini;
-				}
-			},
-			increase_direction: 'down',
+        var str = settings.format_string;
+        str = str.replace ('%H', tim);
+        str = str.replace ('%M', mini);
+        if (settings.show_meridian) {
+          str = str.replace ('%p', meri);
+        }
+        return str;
+      },
+      format_string: '%H : %M : %p', 
+      increase_direction: 'down',
 			custom_classes: '',
 			min_hour_value: 1,
 			max_hour_value: 12,
 			show_meridian: true,
-			step_size_hours: '1',
+      step_size_hours: '1',
 			step_size_minutes: '1',
 			overflow_minutes: false,
 			disable_keyboard_mobile: false,
